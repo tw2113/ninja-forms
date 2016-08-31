@@ -32,4 +32,18 @@ final class NF_MergeTags_Post extends NF_Abstracts_MergeTags
         return ( is_object ( $post ) ) ? get_permalink( $post->ID ) : '';
     }
 
+    protected function post_author()
+    {
+        global $post;
+        $author = get_user_by( 'id', $post->post_author );
+        return $author->display_name;
+    }
+
+    protected function post_author_email()
+    {
+        global $post;
+        $author = get_user_by( 'id', $post->post_author );
+        return $author->user_email;
+    }
+
 } // END CLASS NF_MergeTags_System
