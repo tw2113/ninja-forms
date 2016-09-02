@@ -35,13 +35,15 @@ final class NF_MergeTags_Post extends NF_Abstracts_MergeTags
     protected function post_author()
     {
         global $post;
-        $author = get_user_by( 'id', $post->post_author );
+        if( ! is_object( $post )  ) return;
+        $author = get_user_by('id', $post->post_author);
         return $author->display_name;
     }
 
     protected function post_author_email()
     {
         global $post;
+        if( ! is_object( $post ) ) return;
         $author = get_user_by( 'id', $post->post_author );
         return $author->user_email;
     }
