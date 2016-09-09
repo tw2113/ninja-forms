@@ -84,6 +84,17 @@ class NF_WPCLI_NinjaFormsCommand extends WP_CLI_Command
     }
 
     /**
+     * @synopsis <id>
+     * @subcommand nuke
+     * @alias nuke
+     */
+    public function nuke()
+    {
+        $migrations = new NF_Database_Migrations();
+        $migrations->nuke(TRUE, TRUE);
+    }
+
+    /**
      * Installs mock form data
      */
     public function mock()
