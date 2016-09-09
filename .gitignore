@@ -17,7 +17,7 @@ deploy.sh
 deploy-old.sh
 tests/_output/*
 tests/_support/_generated/*
-tests/tmp/*
+tests/tmp/
 !tests/tmp/wp/*
 vendor/
 composer.lock

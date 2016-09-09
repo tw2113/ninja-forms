@@ -88,6 +88,8 @@ PHP
     wp db create
     wp core install --url="$WP_SITE_URL" --title="Acceptance Testing Site" --admin_user="admin" --admin_password="admin" --admin_email="admin@example.com"
 
+    # Install Ninja Forms
+    wp plugin install ninja-forms --activate --force
 }
 
 if [ 'true' == ${START_FROM_SCRATCH} ] || [ ! -d "$WP_SITE_PATH/wp-admin" ]; then
@@ -99,13 +101,9 @@ if [ 'true' == ${START_FROM_SCRATCH} ] || [ ! -d "$WP_SITE_PATH/wp-admin" ]; the
     php ./vendor/bin/codecept build
 else
     echo "Resetting WordPress Database..."
+    wp post delete $(wp post list --post_type='attachment' --format=ids --path=tests/tmp/wp/) --path=tests/tmp/wp/
 
-    # Nuke Ninja Forms data and uninstall.
     wp ninja-forms nuke
-
-    # Deactivate Ninja Forms and Un-install it if it is active
-    wp plugin uninstall --deactivate
-
     # Install Ninja Forms
     wp plugin install ninja-forms --activate --force
 
@@ -124,7 +122,8 @@ done
 
 echo "Running Acceptance Tests with Codeception..."
 WP_SITE_PATH="$WP_SITE_PATH" \
-php ./vendor/bin/codecept run acceptance
+# php ./vendor/bin/codecept run acceptance
+php ./vendor/bin/codecept run /tests/acceptance/006-ContactTemplateCept.php
 
 echo "Shutting down Selenium..."
 pkill -f "java -jar $SERVER_PATH/$SELENIUM_FILENAME"

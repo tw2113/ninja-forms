@@ -1,6 +1,9 @@
 <?php
 $I = new AcceptanceTester( $scenario );
 
+$I->cli( 'ninja-forms nuke' );
+$I->cli( 'plugin install ninja-forms' );
+
 $I->wantTo( 'check that form templates import correctly' );
 
 // Login to wp-admin

@@ -34,7 +34,6 @@ modules:
             adminUsername: admin
             adminPassword: admin
             adminUrl: /wp-admin
-        S3Filesystem:
-            accessKey:
-            accessSecret:
-            bucket:
+        WPCLI:
+            path: /Users/kstover/Dev/WordPress/wp-content/plugins/ninja-forms/tests/tmp/wp
+            throw: true
