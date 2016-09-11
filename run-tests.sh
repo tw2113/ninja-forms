@@ -103,10 +103,6 @@ else
     echo "Resetting WordPress Database..."
     wp post delete $(wp post list --post_type='attachment' --format=ids --path=tests/tmp/wp/) --path=tests/tmp/wp/
 
-    wp ninja-forms nuke
-    # Install Ninja Forms
-    wp plugin install ninja-forms --activate --force
-
 fi
 
 cd $PROJECT_ROOT
@@ -123,7 +119,7 @@ done
 echo "Running Acceptance Tests with Codeception..."
 WP_SITE_PATH="$WP_SITE_PATH" \
 # php ./vendor/bin/codecept run acceptance
-php ./vendor/bin/codecept run /tests/acceptance/006-ContactTemplateCept.php
+php ./vendor/bin/codecept run tests/acceptance/006-ContactTemplateCept.php
 
 echo "Shutting down Selenium..."
 pkill -f "java -jar $SERVER_PATH/$SELENIUM_FILENAME"
