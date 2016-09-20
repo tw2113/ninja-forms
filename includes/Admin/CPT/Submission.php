@@ -29,6 +29,8 @@ class NF_Admin_CPT_Submission
         add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ), 10, 2 );
         add_action( 'add_meta_boxes', array( $this, 'remove_meta_boxes' ) );
 
+        // Filter our submission capabilities
+        add_filter( 'user_has_cap', array( $this, 'cap_filter' ), 10, 3 );
     }
 
     /**
@@ -248,6 +250,14 @@ class NF_Admin_CPT_Submission
     {
         // Remove the default Publish metabox
         remove_meta_box( 'submitdiv', 'nf_sub', 'side' );
+    }
+
+    public function cap_filter( $allcaps, $cap, $args ) {
+        $sub_cap = apply_filters( 'ninja_forms_admin_submissions_capabilities', 'manage_options' );
+        if ( ! empty( $allcaps[ $sub_cap ] ) ) {
+            $allcaps['nf_sub'] = true;
+        }
+        return $allcaps;
     }
 
     /*
