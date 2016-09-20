@@ -69,7 +69,18 @@ class NF_Admin_CPT_Submission
             'has_archive'         => true,
             'exclude_from_search' => false,
             'publicly_queryable'  => true,
-            'capability_type'     => 'page',
+            'capability_type' => 'nf_sub',
+            'capabilities' => array(
+                'publish_posts' => 'nf_sub',
+                'edit_posts' => 'nf_sub',
+                'edit_others_posts' => 'nf_sub',
+                'delete_posts' => 'nf_sub',
+                'delete_others_posts' => 'nf_sub',
+                'read_private_posts' => 'nf_sub',
+                'edit_post' => 'nf_sub',
+                'delete_post' => 'nf_sub',
+                'read_post' => 'nf_sub',
+            ),
         );
         register_post_type( $this->cpt_slug, $args );
     }
