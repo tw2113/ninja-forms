@@ -394,7 +394,7 @@ final class NF_Display_Render
 
         if( $is_preview || self::form_uses_recaptcha( $form_id ) ) {
             $recaptcha_lang = Ninja_Forms()->get_setting('recaptcha_lang');
-            wp_enqueue_script('google-recaptcha', 'https://www.google.com/recaptcha/api.js?hl=' . $recaptcha_lang, array( 'jquery' ), $ver );
+            wp_enqueue_script('google-recaptcha', 'https://www.google.com/recaptcha/api.js?hl=' . $recaptcha_lang, array( 'jquery' ), $ver, TRUE );
         }
 
         if( $is_preview || self::form_uses_datepicker( $form_id ) ) {
