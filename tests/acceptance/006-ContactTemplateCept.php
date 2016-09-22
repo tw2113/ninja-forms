@@ -10,5 +10,3 @@ $I->amOnPage( '/wp-admin/admin.php?page=ninja-forms&form_id=new' );
 $I->waitForElement( '.template-box', 30 );
 $I->click( '.template-box' );
 $I->waitForText('Contact Me', 30);
-
-$I->cli( 'ninja-forms delete_all_forms' );

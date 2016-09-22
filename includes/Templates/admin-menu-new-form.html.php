@@ -407,7 +407,7 @@
 
 <script id="tmpl-nf-edit-setting-textbox" type="text/template">
     <label for="{{{ data.name }}}" class="{{{ data.renderLabelClasses() }}}">{{{ data.label }}} {{{ data.renderTooltip() }}}
-        <input type="text" class="setting" id="{{{ data.name }}}" value="{{{ data.value }}}" {{{ data.renderPlaceholder() }}} />
+        <input type="text" class="setting" id="{{{ data.name }}}" value="{{{ data.value }}}" {{{ data.renderPlaceholder() }}} data-id="{{{ data.name }}}" />
         {{{ data.renderMergeTags() }}}
     </label>
 </script>

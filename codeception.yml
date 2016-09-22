@@ -21,7 +21,7 @@ modules:
             password: root
             dump: tests/_data/dump.sql
             populate: false
-            cleanup: false
+            cleanup: true
             url: 'http://ninjaforms.test'
             tablePrefix: wp_
         WPWebDriver:

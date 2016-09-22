@@ -16,6 +16,7 @@ node_modules
 deploy.sh
 deploy-old.sh
 tests/_output/*
+tests/_data/dump.sql
 tests/_support/_generated/*
 tests/tmp/
 !tests/tmp/wp/*

@@ -90,6 +90,8 @@ PHP
 
     # Install Ninja Forms
     wp plugin install ninja-forms --activate --force
+
+    wp db export "$PROJECT_ROOT/tests/_data/dump.sql"
 }
 
 if [ 'true' == ${START_FROM_SCRATCH} ] || [ ! -d "$WP_SITE_PATH/wp-admin" ]; then
@@ -118,8 +120,9 @@ done
 
 echo "Running Acceptance Tests with Codeception..."
 WP_SITE_PATH="$WP_SITE_PATH" \
-# php ./vendor/bin/codecept run acceptance
-php ./vendor/bin/codecept run tests/acceptance/006-ContactTemplateCept.php
+# php ./vendor/bin/codecept run acceptance\
+php ./vendor/bin/codecept run tests/acceptance/008-EditFormTitleCept.php
+
 
 echo "Shutting down Selenium..."
 pkill -f "java -jar $SERVER_PATH/$SELENIUM_FILENAME"
