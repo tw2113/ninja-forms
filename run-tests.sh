@@ -101,10 +101,6 @@ if [ 'true' == ${START_FROM_SCRATCH} ] || [ ! -d "$WP_SITE_PATH/wp-admin" ]; the
 
     echo "Building Acceptance Tests with Codeception..."
     php ./vendor/bin/codecept build
-else
-    echo "Resetting WordPress Database..."
-    wp post delete $(wp post list --post_type='attachment' --format=ids --path=tests/tmp/wp/) --path=tests/tmp/wp/
-
 fi
 
 cd $PROJECT_ROOT
